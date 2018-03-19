@@ -25,8 +25,7 @@ resource "aws_iam_role_policy" "s3_access_policy" {
       "Action": "s3:*",
       "Resource": "*"
     }
-   ]
-
+  ]
 }
 EOF
 }
@@ -39,12 +38,12 @@ resource "aws_iam_role" "s3_access_role" {
   "Version": "2012-10-17",
   "Statement": [
   {
-    "Action": "sts:AssumeRole",
-    "Principle": {
-       "Service": "ec2.amazonaws.com"
+      "Action": "sts:AssumeRole",
+      "Principal": {
+      "Service": "ec2.amazonaws.com"
   },
-    "Effect": "Allow",
-    "Sid": ""
+      "Effect": "Allow",
+      "Sid": ""
     }
   ]
 }
@@ -234,7 +233,7 @@ resource "aws_security_group" "wp_dev_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["${var.localip}"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
     from_port   = 0
@@ -328,7 +327,7 @@ resource "aws_vpc_endpoint" "wp_private-s3_endpoint" {
             "Action": "*",
             "Effect": "Allow",
             "Resource": "*",
-            "Principle": "*"
+            "Principal": "*"
         }
      ]
 }

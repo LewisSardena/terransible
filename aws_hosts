@@ -1,0 +1,5 @@
+[dev]
+52.23.249.181
+[dev:vars]
+s3code=terransible-7138
+domain=terransible
